@@ -1,7 +1,18 @@
 var stringConverter = {
-    convertByte: function (oneByte, bytesPerPixel, conversionType, endianness) {
+    bitSwap: function (b) {
+        b = (b & 0xF0) >> 4 | (b & 0x0F) << 4;
+        b = (b & 0xCC) >> 2 | (b & 0x33) << 2;
+        b = (b & 0xAA) >> 1 | (b & 0x55) << 1;
+        return b;
+    },
+    
+    convertByte: function (oneByte, bytesPerPixel, conversionType, endianness, swapBits) {
         // console.log(oneByte);
         var stringByte = '???';
+
+        if (swapBits) {
+            oneByte = bitSwap(oneByte);
+        }
 
         if (conversionType == 'HEX0' || conversionType == 'HEX_SLASH') {
             stringByte = oneByte.toString(16).padStart(bytesPerPixel * 2, '0');
@@ -20,7 +31,7 @@ var stringConverter = {
         return stringByte;
     },
 
-    convert: function (dataLength, bytesPerPixel, conversionType, multiLine, endianness, colNumber, data) {
+    convert: function (dataLength, bytesPerPixel, conversionType, multiLine, endianness, colNumber, swapBits, data) {
         var resultString = '';
         for (var i = 0; i < dataLength; i++) {
             var stringByte = '';
@@ -33,7 +44,7 @@ var stringConverter = {
                 }
                 combinedByte = combinedByte | pixelByte;
             }
-            stringByte = this.convertByte(combinedByte, bytesPerPixel, conversionType, endianness) + ', ';
+            stringByte = this.convertByte(combinedByte, bytesPerPixel, conversionType, endianness, swapBits) + ', ';
             if (multiLine && ((i + 1) % colNumber == 0)) {
                 stringByte += '\r\n  ';
             }
