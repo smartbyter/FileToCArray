@@ -205,6 +205,7 @@ function convertToString(data, colNum, isImage, imageHeight, imageWidth) {
     var conversionType = $('#selFormat').val();
     var paletteMod = $('#cbPaletteMod').val();
     var separateBytes = $('#cbSeparateBytes').is(':checked');
+    var swapBits = $('#cbSwapBits').is(':checked');
     var endianness = $('#selEndianness').val();
     var dataLength = data.byteLength;
     console.log('dataLength: ' + dataLength);
@@ -235,7 +236,7 @@ function convertToString(data, colNum, isImage, imageHeight, imageWidth) {
 
     resultString += '// array size is ' + dataLength + '\r\n';
     resultString += assebleSignature() + ' = {\r\n  ';
-    resultString += stringConverter.convert(actualDataLength, bytesPerPixel, conversionType, multiLine, endianness, colNumber, data);
+    resultString += stringConverter.convert(actualDataLength, bytesPerPixel, conversionType, multiLine, endianness, colNumber, swapBits, data);
     resultString += '\r\n};';
 
     return resultString;
