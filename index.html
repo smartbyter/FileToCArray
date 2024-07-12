@@ -147,6 +147,14 @@ static const unsigned char awesomeimage[] = {
             <input type="checkbox" id="cbSeparateBytes" class="imageConversionOption"/>
         </div>
         <div class="fileIsImage">
+            <label for="cbSwapBits" class="imageConversionOption">Swap bits in byte
+                <div class="tooltip">
+                    <span class="tooltiptext">Useful when working with the u8g2 library.</span>
+                </div> 
+            </label>
+            <input type="checkbox" id="cbSwapBits" class="imageConversionOption"/>
+        </div>
+        <div class="fileIsImage">
             <label id="lblEndianness" for="selEndianness" class="imageConversionOption">Endianness</label>
             <select id="selEndianness" class="imageConversionOption">
                 <option value="le">Little-endian</option>
