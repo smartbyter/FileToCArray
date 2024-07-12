@@ -11,7 +11,7 @@ var stringConverter = {
         var stringByte = '???';
 
         if (swapBits) {
-            oneByte = bitSwap(oneByte);
+            oneByte = this.bitSwap(oneByte);
         }
 
         if (conversionType == 'HEX0' || conversionType == 'HEX_SLASH') {
