@@ -3,6 +3,8 @@ Coverts any file to a C style array.
 Useful if you want to embed a file (binary, text, image, whatever) into your code!
 Use it for your Arduino or other embedded projects.
 
+Add new option for support swap bits used in u8g2 library. 
+
 Just select a file, specify the array format and click convert. It will give you the contents of the file in the specified format, that you can embed into your code.
 Supported formats:
  - Hex (0x00)
