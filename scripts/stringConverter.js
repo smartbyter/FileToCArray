@@ -1,8 +1,8 @@
 var stringConverter = {
     bitSwap: function (b) {
-        b = (b & 0xF0) >> 4 | (b & 0x0F) << 4;
-        b = (b & 0xCC) >> 2 | (b & 0x33) << 2;
-        b = (b & 0xAA) >> 1 | (b & 0x55) << 1;
+        b = (b & BigInt(0xF0)) >> BigInt(4) | (b & BigInt(0x0F)) << BigInt(4);
+        b = (b & BigInt(0xCC)) >> BigInt(2) | (b & BigInt(0x33)) << BigInt(2);
+        b = (b & BigInt(0xAA)) >> BigInt(1) | (b & BigInt(0x55)) << BigInt(1);
         return b;
     },
     
